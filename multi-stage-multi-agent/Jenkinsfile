@@ -17,5 +17,16 @@ pipeline {
         sh 'node --version'
       }
     }
+       stage('Hello World Container') {
+            agent {
+                docker {
+                    image 'ubuntu:latest' // Use a base image like Ubuntu or Alpine
+                }
+            }
+            steps {
+                sh 'echo "Hello from inside the container!"'
+                sh 'ls -la /' // Example: list directory contents inside the container
+            }
+        }
   }
 }
